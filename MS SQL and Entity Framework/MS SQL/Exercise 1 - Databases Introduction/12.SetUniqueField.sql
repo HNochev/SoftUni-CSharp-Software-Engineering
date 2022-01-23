@@ -1,0 +1,11 @@
+--Problem 12
+ALTER TABLE Users
+DROP CONSTRAINT IdUsername_PK
+
+ALTER TABLE Users
+  ADD CONSTRAINT Id_PK
+    PRIMARY KEY (Id)
+
+ALTER TABLE Users
+	ADD CONSTRAINT CH_UsernameIsAtLeastThreeSymbols
+	CHECK (LEN(Password) > 3)
