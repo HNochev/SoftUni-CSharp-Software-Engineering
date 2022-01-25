@@ -1,0 +1,43 @@
+--Problem 5
+CREATE TABLE Cities
+(
+	CityID INT PRIMARY KEY,
+	[Name] VARCHAR(50)
+)
+
+CREATE TABLE Customers
+(
+	CustomerID INT PRIMARY KEY,
+	[Name] VARCHAR(50),
+	Birthday DATE,
+	CityID INT FOREIGN KEY REFERENCES Cities(CityID)
+)
+
+CREATE TABLE Orders
+(
+	OrderID INT PRIMARY KEY,
+	CustomerID INT FOREIGN KEY REFERENCES Customers(CustomerID)
+)
+
+CREATE TABLE ItemTypes
+(
+	ItemTypeID INT PRIMARY KEY,
+	[Name] VARCHAR(50)
+)
+
+CREATE TABLE Items
+(
+	ItemID INT PRIMARY KEY,
+	[Name] VARCHAR(50),
+	ItemTypeID INT FOREIGN KEY REFERENCES ItemTypes(ItemTypeID),
+)
+
+CREATE TABLE OrderItems
+(
+	OrderID INT,
+	ItemID INT
+
+	CONSTRAINT PK_Orders_Items PRIMARY KEY (OrderID, ItemID),
+	CONSTRAINT FK_Orders FOREIGN KEY (OrderID) REFERENCES Orders(OrderID),
+	CONSTRAINT FK_Items FOREIGN KEY (ItemID) REFERENCES Items(ItemID)
+)
