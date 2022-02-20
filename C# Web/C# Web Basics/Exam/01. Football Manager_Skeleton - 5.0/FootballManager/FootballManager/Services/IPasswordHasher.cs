@@ -1,0 +1,8 @@
+﻿
+namespace FootballManager.Services
+{
+    public interface IPasswordHasher
+    {
+        string HashPassword(string password);
+    }
+}
